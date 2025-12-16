@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONICA | Jablonski Lab</title>
+    <meta name="description" content="MONICA: Morphometrics from Optic Nerve Imaging Contour Analysis. Automated optic nerve morphometric analysis for research.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #FAFAF8;
+            --color-bg-alt: #F0EFEB;
+            --color-text: #1a1a1a;
+            --color-text-muted: #5a5a5a;
+            --color-accent: #2D6A4F;
+            --color-accent-light: #40916C;
+            --color-border: #e0dfdb;
+            --font-display: 'DM Serif Display', Georgia, serif;
+            --font-body: 'Source Sans 3', system-ui, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--color-accent);
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero p {
+            max-width: 640px;
+            margin: 0 auto 2.5rem;
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .screenshot-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .screenshot {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.04),
+                0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--color-border);
+        }
+
+        .features {
+            max-width: 900px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .features h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .metrics-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .metric-category {
+            background: white;
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .metric-category h3 {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin: 0;
+        }
+
+        .metric-category p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .metric-category {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+
+        .contact {
+            background: var(--color-bg-alt);
+            padding: 5rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-inner {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact > p, .contact-intro {
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            background: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            background: var(--color-accent);
+            color: white;
+            padding: 0.875rem 1.5rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 0.5rem;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--color-accent-light);
+        }
+
+        button[type="submit"]:active {
+            transform: scale(0.98);
+        }
+
+        footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--color-accent);
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 1rem 1.25rem;
+            }
+            
+            .hero {
+                padding: 2.5rem 1.25rem 3rem;
+            }
+
+            .screenshot-container {
+                padding: 0 1rem;
+            }
+
+            .features {
+                padding: 0 1.25rem;
+            }
+
+            .contact {
+                padding: 3rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">Jablonski Lab</a>
+        <nav>
+            <a href="/tools/" class="active">Tools</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>MONICA</h1>
+            <p class="subtitle">Morphometrics from Optic Nerve Imaging Contour Analysis</p>
+            <p>
+                Automated morphometric analysis for PPD-stained optic nerve cross-sections. 
+                Upload an image and receive axon counts, cross-sectional area, density measurements, 
+                and parenchymal quantification.
+            </p>
+        </section>
+
+        <div class="screenshot-container">
+            <img src="screenshot.png" alt="MONICA web application interface showing morphometric analysis results" class="screenshot">
+        </div>
+
+        <section class="features">
+            <h2>Output metrics</h2>
+            <div class="metrics-list">
+                <div class="metric-category">
+                    <h3>Contour-derived</h3>
+                    <p>Axon Count, ON Area (µm², mm²), Axon Density (/mm²), Parenchymal Area, Parenchymal Fraction, Axon+Myelin Fraction</p>
+                </div>
+                <div class="metric-category">
+                    <h3>Axon shape</h3>
+                    <p>Mean, Std, Median, Min, Max for: Diameter, Perimeter, Circularity, Eccentricity, Solidity</p>
+                </div>
+                <div class="metric-category">
+                    <h3>Fiber (axon + myelin)</h3>
+                    <p>Mean, Std, Median, Min, Max for: Fiber Area, Fiber Diameter</p>
+                </div>
+                <div class="metric-category">
+                    <h3>Myelin</h3>
+                    <p>Mean, Std, Median, Min, Max for: Myelin Area, Myelin Thickness, G-Ratio</p>
+                </div>
+                <div class="metric-category">
+                    <h3>Totals</h3>
+                    <p>Total Axon Area, Total Myelin Area, Total Fiber Area</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="contact-inner">
+                <h2>Get in touch</h2>
+                <p class="contact-intro">Questions about MONICA, collaboration inquiries, or consulting requests.</p>
+                
+                <form action="https://formspree.io/f/xblnvdky" method="POST">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div>
+                        <label for="affiliation">Institution / Affiliation</label>
+                        <input type="text" id="affiliation" name="affiliation">
+                    </div>
+                    <div>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Jablonski Lab · University of Tennessee Health Science Center</p>
+    </footer>
+</body>
+</html>
